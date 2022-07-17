@@ -10,7 +10,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureDbContext();
 builder.Services.ConfigureAutomapper();
+builder.Services.ConfigureHttpClientFactory();
 builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
+
+Console.WriteLine($"--> CommandService Endpoint {builder.Configuration["CommandService"]}");
 
 var app = builder.Build();
 

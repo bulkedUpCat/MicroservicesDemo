@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
+using PlatformService.SyncDataServices.Http;
 
 namespace PlatformService.Extensions
 {
@@ -16,6 +17,11 @@ namespace PlatformService.Extensions
         public static void ConfigureAutomapper(this IServiceCollection services)
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        }
+
+        public static void ConfigureHttpClientFactory(this IServiceCollection services)
+        {
+            services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
         }
     }
 }
